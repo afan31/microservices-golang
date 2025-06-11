@@ -1,0 +1,14 @@
+services:
+
+  broker-service:
+    build:
+      context: ./../broker-service
+      dockerfile: ./../broker-service/broker-service.dockerfile
+    restart: always
+    ports:
+      - "8080:80" #map port 8080 on my localhost to port 80 on the docker image
+      # when you access http://localhost:8080 on your machine, 
+      # it will be routed to port 80 inside the broker-service container.
+    deploy:
+      mode: replicated
+      replicas: 1
